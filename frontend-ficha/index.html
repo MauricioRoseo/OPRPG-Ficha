@@ -6,8 +6,185 @@
     <title>Ficha</title>
 </head>
 <body>
-    <h1>Dados do agente</h1>
-    <h3>Personagem: </h3>
-    <h3>
+    <div class="id-card">
+        <div class="portrait"></div>
+        <div class="title-area">
+            <h1>Dados do agente</h1>
+        </div>
+        <div class="info-area">
+            <div class="info-camp" id="perso-name">
+                <div class="info-title"><h3>Personagem:</h3></div>
+                <div class="info"></div>  
+            </div>        
+            <div class="info-camp" id="perso-age">
+                <div class="info-title"><h3>Idade:</h3></div>
+                <div class="info"></div>  
+            </div>  
+            <div class="info-camp" id="perso-player">
+                <div class="info-title"><h3>Jogador:</h3></div>
+                <div class="info"></div>  
+            </div>
+            <div class="info-camp" id="perso-class">
+                <div class="info-title"><h3>Classe:</h3></div>
+                <div class="info"></div>  
+            </div>
+            <div class="info-camp" id="perso-trail">
+                <div class="info-title"><h3>Trilha:</h3></div>
+                <div class="info"></div>  
+            </div>
+            <div class="info-camp" id="perso-afinity">
+                <div class="info-title"><h3>Afinidade:</h3></div>
+                <div class="info"></div>  
+            </div>
+            <div class="info-camp" id="perso-origing">
+                <div class="info-title"><h3>Origem:</h3></div>
+                <div class="info"></div>  
+            </div>
+            <div class="info-camp" id="perso-patent">
+                <div class="info-title"><h3>Patente:</h3></div>
+                <div class="info"></div>  
+            </div>
+            <div class="info-camp" id="perso-NEX">
+                <div class="info-title"><h3>Nível de Exposição (NEX):</h3></div>
+                <div class="info"></div>  
+            </div>
+        </div>
+        <div class="miniatura"></div>
+    </div>
+    <div class="resume">
+        <div class="status">
+            <div class="status-card" id="status-PVs">
+                <div class="status-title">Pontos de Vide (PVs)</div>
+                <div class="status-comparetion">
+                    <div class="status-value-box" id="status-now">
+                        <div class="status-value-type">Atual</div>
+                        <div class="status-value"></div>
+                    </div>
+                    <div class="separete"></div>
+                    <div class="status-value-box" id="status-max">
+                        <div class="status-value-type">Máximo</div>
+                        <div class="status-value"></div>
+                    </div>
+                </div>
+                <div class="status-value-box" id="status-temp">
+                    <div class="status-value-type">Temporário</div>
+                    <div class="status-value"></div>
+                </div>
+                <div class="status-bar"></div>
+            </div>
+            <div class="status-card" id="status-PEs">
+                <div class="status-title">Pontos de Esforço (PEs)</div>
+                <div class="status-comparetion">
+                    <div class="status-value-box" id="status-now">
+                        <div class="status-value-type">Atual</div>
+                        <div class="status-value"></div>
+                    </div>
+                    <div class="separete"></div>
+                    <div class="status-value-box" id="status-max">
+                        <div class="status-value-type">Máximo</div>
+                        <div class="status-value"></div>
+                    </div>
+                </div>
+                <div class="status-value-box" id="status-temp">
+                    <div class="status-value-type">Temporário</div>
+                    <div class="status-value"></div>
+                </div>
+                <div class="status-bar"></div>
+            </div>
+            <div class="status-card" id="status-SAN">
+                <div class="status-title">Sanidade</div>
+                <div class="status-comparetion">
+                    <div class="status-value-box" id="status-now">
+                        <div class="status-value-type">Atual</div>
+                        <div class="status-value"></div>
+                    </div>
+                    <div class="separete"></div>
+                    <div class="status-value-box" id="status-max">
+                        <div class="status-value-type">Máximo</div>
+                        <div class="status-value"></div>
+                    </div>
+                </div>
+                <div class="status-value-box" id="status-temp">
+                    <div class="status-value-type">Temporário</div>
+                    <div class="status-value"></div>
+                </div>
+                <div class="status-bar"></div>
+            </div>
+        </div>
+        <div class="stats-info">
+            <div class="states">
+                <div class="state" id="dying">
+                    <div class="state-title">Morrendo</div>
+                    <div class="state-checkbox"><input type="checkbox" name="Morrendo" value="0"></div>
+                    <div class="state-counter">
+                        <div class="state-count"></div>
+                        <div class="separete"></div>
+                        <div class="state-count-limit">3</div>
+                    </div>
+                </div>
+                <div class="state" id="insanity">
+                    <div class="state-title">Enlouquecendo</div>
+                    <div class="state-checkbox"><input type="checkbox" name="Enlouquecendo" value="0"></div>
+                    <div class="state-counter">
+                        <div class="state-count"></div>
+                        <div class="separete"></div>
+                        <div class="state-count-limit">3</div>
+                    </div>
+                </div>
+            </div>
+            <div class="defences-area">
+                <div class="defences-title"></div>
+                <div class="defences">
+                    <div class="defence" id="passive-defence">
+                        <div class="defence-value"></div>
+                        <div class="defence-type"></div>
+                    </div>
+                    <div class="defence" id="dodge-defence">
+                        <div class="defence-value"></div>
+                        <div class="defence-type"></div>
+                    </div>
+                    <div class="defence" id="block-defence">
+                        <div class="defence-value"></div>
+                        <div class="defence-type"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="limits">
+            <div class="PE-limit">
+                <div class="limit-title"></div>
+                <div class="limit-value"></div>
+            </div>
+            <div class="move-limit">
+                <div class="limit-value-now"></div>
+                <div></div>
+                <div class="limit-value-max"></div>
+                <div class="limit-title"></div>
+            </div>
+        </div>
+        </div>
+        <div class="atributes">
+            <div class="background-imagem"></div>
+            <div class="atribute" id="atribute-FOR">
+                <div class="atribute-value"></div>
+                <div class="atribute-title">FOR</div>
+            </div>
+            <div class="atribute" id="atribute-AGI">
+                <div class="atribute-value"></div>
+                <div class="atribute-title">AGI</div>
+            </div>
+            <div class="atribute" id="atribute-INT">
+                <div class="atribute-value"></div>
+                <div class="atribute-title">INT</div>
+            </div>
+            <div class="atribute" id="atribute-VIG">
+                <div class="atribute-value"></div>
+                <div class="atribute-title">VIG</div>
+            </div>
+            <div class="atribute" id="atribute-PRE">
+                <div class="atribute-value"></div>
+                <div class="atribute-title">PRE</div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
