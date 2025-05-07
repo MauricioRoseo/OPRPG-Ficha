@@ -1,0 +1,20 @@
+{
+  "name": "api-backend-ficha",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "server": "node src/server.js --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "github.com/MauricioRoseo/OPRPG-Ficha"
+  },
+  "author": "Mauricio Roseo",
+  "license": "MIT",
+  "description": "",
+  "dependencies": {
+    "@prisma/client": "^6.7.0",
+    "express": "^5.1.0",
+    "prisma": "^6.7.0"
+  }
+}
