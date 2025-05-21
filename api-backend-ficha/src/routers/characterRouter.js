@@ -8,7 +8,7 @@ const router = express.Router()
 
 router.get('/list', getCharacterController)
 router.get('/:id', ()=>{}) // get de uma unica propriedade por id
-router.post('/', createCharacterController)
+router.post('/create', createCharacterController)
 router.delete('/:id', deleteCharacterController)
 router.put('/:id', updateCharacterController)
 

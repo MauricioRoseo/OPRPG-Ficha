@@ -1,4 +1,4 @@
-import { update } from "../../models/propertyModel.js"
+import { update } from "../../models/characterModel.js"
  
  export default async function updatePropertyController(req, res) {
      const {id} = req.params
