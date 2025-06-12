@@ -16,7 +16,7 @@ app.use(express.json())
 
 app.get('/', welcomeController)
 
-app.use('*', notFoundController)
+app.use(notFoundController)
 app.use(errorsHandler)
 
 app.use('/character', characterRouter)
