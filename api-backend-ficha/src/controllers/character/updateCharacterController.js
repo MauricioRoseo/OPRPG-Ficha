@@ -1,13 +1,13 @@
 import { update } from "../../models/characterModel.js"
  
- export default async function updatePropertyController(req, res) {
+ export default async function updateCharacterController(req, res) {
      const {id} = req.params
-     const property = req.body
+     const character = req.body
  
-     const result = await update(+id, property)
+     const result = await update(+id, character)
  
      return res.json({
          message: "Personagem atualizado com sucesso!",
-         property: result
+         character: result
      })
  }

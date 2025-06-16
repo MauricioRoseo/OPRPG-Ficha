@@ -15,11 +15,12 @@ app.use(cors())
 app.use(express.json())
 
 app.get('/', welcomeController)
+app.use('/character', characterRouter)
 
 app.use(notFoundController)
 app.use(errorsHandler)
 
-app.use('/character', characterRouter)
+
 
 app.listen(port, () => {
   console.log(`Servidor rodando em http://localhost:${port}`)
