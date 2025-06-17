@@ -30,3 +30,11 @@ model character {
   VIG      Int
   PRE      Int
 }
+
+model item {
+  id       Int      @id @default(autoincrement())
+  owner    Int 
+  name     String   @db.VarChar(255)
+  weight   Float    
+  description String @db.VarChar(255)
+}

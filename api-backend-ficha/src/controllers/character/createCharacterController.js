@@ -13,7 +13,7 @@ export default async function createCharacterController(req, res, next) {
         const result = await create(characterValidated)
         return res.json({
             message: "Personagem criado com sucesso!",
-            property: result
+            character: result
         })
     }catch(error){
         next(error)
