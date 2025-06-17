@@ -4,6 +4,8 @@ import createCharacterController from '../controllers/character/createCharacterC
 import deleteCharacterController from '../controllers/character/deleteCharacterController.js'
 import updateCharacterController from '../controllers/character/updateCharacterController.js'
 import itemRouter from '../routers/itemRouter.js'
+import exportCharacterCSVController from '../controllers/character/exportCharacterCSVController.js'
+import exportCharacterXLSXController from '../controllers/character/exportCharacterXLSXController.js'
 
 const router = express.Router()
 
@@ -13,5 +15,7 @@ router.use('/item', itemRouter)
 router.post('/create', createCharacterController)
 router.delete('/:id', deleteCharacterController)
 router.put('/:id', updateCharacterController)
+router.get('/export/csv', exportCharacterCSVController)
+router.get('/export/xlsx', exportCharacterXLSXController)
 
 export default router
