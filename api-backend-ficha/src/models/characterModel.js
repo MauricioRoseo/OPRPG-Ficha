@@ -109,6 +109,14 @@ export async function getList(){
     return result
 }
 
+export async function getById(id) {
+  return await prisma.character.findUnique({
+    where: {
+      id: Number(id)
+    }
+  })
+}
+
 export async function update(id, character){
     const result = await prisma.character.update({
         where: {

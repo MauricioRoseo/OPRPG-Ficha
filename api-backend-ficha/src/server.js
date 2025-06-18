@@ -1,4 +1,3 @@
-//const express = require('express')
 import express from 'express'
 import characterRouter from './routers/characterRouter.js'
 import cors from 'cors'

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consultar Ficha</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+    <h1>Consultar Ficha de Personagem</h1>
+    <form id="consulta-ficha-form">
+        <label for="id">ID do Personagem:</label>
+        <input type="number" id="id" name="id" required />
+        <button type="submit">Buscar</button>
+    </form>
+
+    <!-- Aqui será exibida a ficha, reutilizando a mesma estrutura -->
+    <div id="ficha-container" style="display:none">
+        <div class="info-area">
+            <div class="info-camp" id="perso-name">
+                <div class="info-title"><h3>Personagem:</h3></div>
+                <div class="info"></div>  
+            </div>        
+            <div class="info-camp" id="perso-age">
+                <div class="info-title"><h3>Idade:</h3></div>
+                <div class="info"></div>  
+            </div>  
+            <div class="info-camp" id="perso-player">
+                <div class="info-title"><h3>Jogador:</h3></div>
+                <div class="info"></div>  
+            </div>
+            <div class="info-camp" id="perso-class">
+                <div class="info-title"><h3>Classe:</h3></div>
+                <div class="info"></div>  
+            </div>
+            <div class="info-camp" id="perso-trail">
+                <div class="info-title"><h3>Trilha:</h3></div>
+                <div class="info"></div>  
+            </div>
+            <div class="info-camp" id="perso-afinity">
+                <div class="info-title"><h3>Afinidade:</h3></div>
+                <div class="info"></div>  
+            </div>
+            <div class="info-camp" id="perso-origing">
+                <div class="info-title"><h3>Origem:</h3></div>
+                <div class="info"></div>  
+            </div>
+            <div class="info-camp" id="perso-patent">
+                <div class="info-title"><h3>Patente:</h3></div>
+                <div class="info"></div>  
+            </div>
+            <div class="info-camp" id="perso-NEX">
+                <div class="info-title"><h3>Nível de Exposição (NEX):</h3></div>
+                <div class="info"></div>  
+            </div>
+        </div>
+        <iframe src="index.html" id="ficha-frame" width="100%" height="800" style="border:none;"></iframe>
+    </div>
+
+    <script src="./js/exibeFicha.js"></script>
+</body>
+</html>
