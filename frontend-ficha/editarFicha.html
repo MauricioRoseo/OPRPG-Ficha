@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Editar Ficha</title>
+  <link rel="stylesheet" href="./css/style.css" />
+</head>
+<body>
+  <div class="form-area">
+    <h1>Editar Ficha do Personagem</h1>
+    <form id="editForm">
+      <label>Nome: <input type="text" id="name" required /></label><br />
+      <label>Idade: <input type="number" id="age" required /></label><br />
+      <label>Jogador: <input type="text" id="player" required /></label><br />
+      <label>Classe: <input type="text" id="class" required /></label><br />
+      <label>Trilha: <input type="text" id="trail" /></label><br />
+      <label>Afinidade: <input type="text" id="afinity" /></label><br />
+      <label>Origem: <input type="text" id="origin" /></label><br />
+      <label>Patente: <input type="text" id="patent" /></label><br />
+      <label>NEX: <input type="number" id="NEX" /></label><br />
+      <label>FOR: <input type="number" id="FOR" /></label><br />
+      <label>AGI: <input type="number" id="AGI" /></label><br />
+      <label>INT: <input type="number" id="INT" /></label><br />
+      <label>VIG: <input type="number" id="VIG" /></label><br />
+      <label>PRE: <input type="number" id="PRE" /></label><br />
+
+      <button type="submit">Salvar Alterações</button>
+    </form>
+
+    <button id="deleteBtn" style="margin-top: 20px; color: red;">Excluir Personagem</button>
+  </div>
+
+  <script src="./js/editarFicha.js"></script>
+</body>
+</html>
