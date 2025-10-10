@@ -80,49 +80,39 @@ const characterSchema = z.object({
       }).int('PRE deve ser um número inteiro.')
     })
   
-  export const characterValidator = (character, partial = null) => {
-      if(partial){
-          return characterSchema.partial(partial).safeParse(character)
-      }
-      return characterSchema.safeParse(character)
-  }
-  
-
-export async function create(character){
-    const result = await prisma.character.create({
-        data: character
-    })
-    return result
-}
-
-export async function remove(id){
-    const result = await prisma.character.delete({
-        where: {
-            id: id
+    export class Personagem {
+      constructor(data) {
+        const parsed = characterSchema.safeParse(data);
+        if (!parsed.success) {
+          throw new Error(parsed.error.issues[0].message);
         }
-    })
-    return result
-}
-
-export async function getList(){
-    const result = await prisma.character.findMany()
-    return result
-}
-
-export async function getById(id) {
-  return await prisma.character.findUnique({
-    where: {
-      id: Number(id)
+        Object.assign(this, parsed.data);
+      }
+    
+      // ========== MÉTODOS DE INSTÂNCIA ==========
+      async salvar() {
+        return await prisma.character.create({ data: this });
+      }
+    
+      async atualizar() {
+        return await prisma.character.update({
+          where: { id: this.id },
+          data: this
+        });
+      }
+    
+      async deletar() {
+        return await prisma.character.delete({
+          where: { id: this.id }
+        });
+      }
+    
+      // ========== MÉTODOS ESTÁTICOS ==========
+      static async listarTodos() {
+        return await prisma.character.findMany();
+      }
+    
+      static async buscarPorId(id) {
+        return await prisma.character.findUnique({ where: { id: Number(id) } });
+      }
     }
-  })
-}
-
-export async function update(id, character){
-    const result = await prisma.character.update({
-        where: {
-            id
-        },
-        data: character
-    })
-    return result
-}

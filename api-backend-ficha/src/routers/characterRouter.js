@@ -1,22 +1,14 @@
-import express from 'express'
-import getCharacterController from '../controllers/character/getCharacterController.js'
-import createCharacterController from '../controllers/character/createCharacterController.js'
-import deleteCharacterController from '../controllers/character/deleteCharacterController.js'
-import updateCharacterController from '../controllers/character/updateCharacterController.js'
-import itemRouter from '../routers/itemRouter.js'
-import exportCharacterCSVController from '../controllers/character/exportCharacterCSVController.js'
-import exportCharacterXLSXController from '../controllers/character/exportCharacterXLSXController.js'
-import getCharacterByIdController from '../controllers/character/getCharacterByIdController.js'
+import express from "express"
+import CharacterController from "../controllers/character/CharacterController.js"
 
 const router = express.Router()
 
-router.get('/list', getCharacterController)
-router.get('/:id', getCharacterByIdController) // get de uma unica propriedade por id
-router.use('/item', itemRouter)
-router.post('/create', createCharacterController)
-router.delete('/:id', deleteCharacterController)
-router.put('/:id', updateCharacterController)
-router.get('/export/csv', exportCharacterCSVController)
-router.get('/export/xlsx', exportCharacterXLSXController) //tá com um paywall
+router.get("/list", (req, res) => CharacterController.getAll(req, res))
+router.get("/:id", (req, res, next) => CharacterController.getById(req, res, next))
+router.post("/create", (req, res, next) => CharacterController.create(req, res, next))
+router.put("/:id", (req, res, next) => CharacterController.update(req, res, next))
+router.delete("/:id", (req, res, next) => CharacterController.delete(req, res, next))
+router.get("/export/csv", (req, res, next) => CharacterController.exportCSV(req, res, next))
+router.get("/export/xlsx", (req, res, next) => CharacterController.exportXLSX(req, res, next))
 
 export default router
