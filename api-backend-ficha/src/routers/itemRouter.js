@@ -8,5 +8,6 @@ router.get("/:id", ItemController.getById);
 router.post("/create", ItemController.create);
 router.put("/:id", ItemController.update);
 router.delete("/:id", ItemController.delete);
+router.get("/owner/:ownerId", ItemController.getByOwner);
 
 export default router;

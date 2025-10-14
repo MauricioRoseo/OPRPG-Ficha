@@ -24,20 +24,26 @@ class CharacterController {
   }
 
   // Deletar personagem
-  async delete(req, res, next) {
+  async delete(req, res) {
     try {
-      const { id } = req.params
-      const personagem = new Personagem({ id: +id })
-      const result = await personagem.deletar()
+        const { id } = req.params;
 
-      return res.json({
-        message: `Personagem ID ${id} excluído com sucesso!`,
-        character: result
-      })
+        if (!id) {
+            return res.status(400).json({ message: "ID do personagem é obrigatório." });
+        }
+
+        const personagem = await Personagem.deleteById(id);
+
+        if (!personagem) {
+            return res.status(404).json({ message: "Personagem não encontrado." });
+        }
+
+        return res.json({ message: "Personagem deletado com sucesso!" });
     } catch (error) {
-      next(error)
+        console.error(error);
+        return res.status(500).json({ message: "Erro ao deletar personagem.", error: error.message });
     }
-  }
+}
 
   // Exportar CSV
   async exportCSV(req, res, next) {
@@ -122,15 +128,12 @@ class CharacterController {
   }
 
   // Atualizar
-  async update(req, res) {
+  async update(req, res, next) {
     try {
       const { id } = req.params;
       const personagem = new Personagem({ id: Number(id), ...req.body });
       const atualizado = await personagem.atualizar();
-      res.json({
-        message: "Personagem atualizado com sucesso!",
-        item: atualizado
-      });
+      res.json({ message: "Personagem atualizado com sucesso!", character: atualizado });
     } catch (error) {
       next(error);
     }

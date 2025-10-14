@@ -3,7 +3,7 @@ import { z } from "zod";
 
 const prisma = new PrismaClient();
 
-// ✅ Esquema base sem o ID (para criação)
+// 🔹 Esquema base sem o ID (para criação)
 const itemBaseSchema = z.object({
   owner: z.number({
     required_error: "O id do portador é obrigatório.",
@@ -26,7 +26,7 @@ const itemBaseSchema = z.object({
   }).min(1, "A descrição não pode estar vazia.").max(1000, "A descrição deve ter no máximo 1000 caracteres.")
 });
 
-// ✅ Esquema com ID opcional (para atualização)
+// 🔹 Esquema completo com ID opcional (para update/delete)
 const itemSchema = itemBaseSchema.extend({
   id: z.number({
     invalid_type_error: "O id deve ser um número."
@@ -42,17 +42,19 @@ export class Item {
     Object.assign(this, parsed.data);
   }
 
-  // ========== MÉTODOS DE INSTÂNCIA ==========
+  // Criar item
   async salvar() {
-    // O Prisma ignora o id se ele vier undefined (ideal para criação)
-    return await prisma.item.create({ data: {
-      owner: this.owner,
-      name: this.name,
-      weight: this.weight,
-      description: this.description
-    }});
+    return await prisma.item.create({
+      data: {
+        owner: this.owner,
+        name: this.name,
+        weight: this.weight,
+        description: this.description
+      }
+    });
   }
 
+  // Atualizar item
   async atualizar() {
     if (!this.id) throw new Error("O ID é obrigatório para atualizar um item.");
     return await prisma.item.update({
@@ -66,6 +68,7 @@ export class Item {
     });
   }
 
+  // Deletar item
   async deletar() {
     if (!this.id) throw new Error("O ID é obrigatório para deletar um item.");
     return await prisma.item.delete({
@@ -73,12 +76,34 @@ export class Item {
     });
   }
 
-  // ========== MÉTODOS ESTÁTICOS ==========
+  // 🔹 Novo método: deletar por ID diretamente (usado pelo controller)
+  static async deleteById(id) {
+    const item = await prisma.item.findUnique({
+      where: { id: Number(id) }
+    });
+
+    if (!item) return null;
+
+    await prisma.item.delete({
+      where: { id: Number(id) }
+    });
+
+    return item;
+  }
+
+  // Listar todos
   static async listarTodos() {
     return await prisma.item.findMany();
   }
 
+  // Buscar por ID
   static async buscarPorId(id) {
     return await prisma.item.findUnique({ where: { id: Number(id) } });
+  }
+  
+  static async buscarPorOwner(ownerId) {
+    return await prisma.item.findMany({
+      where: { owner: Number(ownerId) }
+    });
   }
 }
