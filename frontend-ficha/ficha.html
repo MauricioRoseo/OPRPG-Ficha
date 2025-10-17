@@ -1,62 +1,37 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Consultar Ficha</title>
-  <link rel="stylesheet" href="./css/style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ficha de Personagem</title>
+  <link rel="stylesheet" href="./css/style.css" />
 </head>
 <body>
-  <div class="search-area">
-    <label for="characterId">ID do Personagem:</label>
-    <input type="number" id="characterId" placeholder="Digite o ID...">
-    <button id="searchBtn">Buscar</button>
-  </div>
+  <header>
+    <h1>📜 Ficha de Personagem</h1>
+  </header>
 
-  <div id="characterData" class="id-card" style="display: none">
-    <div class="character-info-area">
-      <h2>Dados do agente</h2>
-      <div class="info-area">
-        <div class="info-camp" id="perso-name">
-          <div class="info-title"><h3>Personagem:</h3></div>
-          <div class="info"></div>  
-        </div>        
-        <div class="info-camp" id="perso-age">
-          <div class="info-title"><h3>Idade:</h3></div>
-          <div class="info"></div>  
-        </div>  
-        <div class="info-camp" id="perso-player">
-          <div class="info-title"><h3>Jogador:</h3></div>
-          <div class="info"></div>  
-        </div>
-        <div class="info-camp" id="perso-class">
-          <div class="info-title"><h3>Classe:</h3></div>
-          <div class="info"></div>  
-        </div>
-        <div class="info-camp" id="perso-trail">
-          <div class="info-title"><h3>Trilha:</h3></div>
-          <div class="info"></div>  
-        </div>
-        <div class="info-camp" id="perso-afinity">
-          <div class="info-title"><h3>Afinidade:</h3></div>
-          <div class="info"></div>  
-        </div>
-        <div class="info-camp" id="perso-origing">
-          <div class="info-title"><h3>Origem:</h3></div>
-          <div class="info"></div>  
-        </div>
-        <div class="info-camp" id="perso-patent">
-          <div class="info-title"><h3>Patente:</h3></div>
-          <div class="info"></div>  
-        </div>
-        <div class="info-camp" id="perso-NEX">
-          <div class="info-title"><h3>NEX:</h3></div>
-          <div class="info"></div>  
-        </div>
-      </div>
+  <main>
+    <!-- Ficha do Agente -->
+    <section id="fichaContainer" class="ficha-container">
+      <p>Carregando ficha...</p>
+    </section>
+
+    <!-- Inventário -->
+    <section id="inventarioContainer" class="inventario-container">
+      <h2>🎒 Inventário</h2>
+      <p>Carregando inventário...</p>
+    </section>
+
+    <div class="btn-area">
+      <button class="btn" onclick="voltar()">⬅ Voltar</button>
     </div>
-  </div>
+  </main>
 
-  <script src="./js/ExibeFicha.js"></script>
+  <footer>
+    <p>Occulta Artificia © 2025 — Sistema de Fichas</p>
+  </footer>
+
+  <script src="./js/ficha.js"></script>
 </body>
 </html>

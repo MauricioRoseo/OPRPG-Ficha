@@ -1,8 +1,151 @@
-.id-card{
-    display: flex;      
-    flex-direction: row; 
-    justify-content: center;  
-    align-items: center;     
+/* ---------- Reset ---------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* ---------- Estrutura global ---------- */
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #121212;
+    color: #f5f5f5;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* ---------- Cabeçalho ---------- */
+  header {
+    text-align: center;
+    padding: 20px;
+    background: linear-gradient(90deg, #00bcd4, #006064);
+    color: #fff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  }
+  
+  header h1 {
+    font-size: 1.8em;
+    letter-spacing: 1px;
+  }
+  
+  /* ---------- Cards ---------- */
+  .cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 25px;
+    padding: 30px 20px;
+  }
+  
+  .card {
+    background-color: #1a1a1a;
+    color: white;
+    border-radius: 10px;
+    padding: 15px;
+    margin: 10px;
+    width: 250px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  
+  .card:hover {
+    transform: scale(1.03);
+    box-shadow: 0 0 15px rgba(0,255,255,0.4);
+  }
+  
+  .card h3 {
+    color: #00bcd4;
+    margin-bottom: 8px;
+  }
+  
+  .card p {
+    color: #bbb;
+    font-size: 0.9em;
+    margin: 4px 0;
+  }
+  
+  .card .actions {
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+  }
+  
+  .btn {
+    background-color: #00bcd4;
+    border: none;
+    border-radius: 6px;
+    color: #fff;
+    padding: 8px 12px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.2s ease;
+    font-size: 0.85em;
+  }
+  
+  .btn:hover {
+    background-color: #0097a7;
+  }
+  
+  /* ---------- Área inferior ---------- */
+  .btn-area {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0 40px;
     gap: 10px;
-    background-color: rgb(170, 170, 170);
-}
+  }
+  
+  /* ---------- Mensagens ---------- */
+  .no-results {
+    text-align: center;
+    color: #aaa;
+    font-size: 1.1em;
+    margin-top: 50px;
+  }
+  
+  /* ---------- Rodapé ---------- */
+  footer {
+    text-align: center;
+    padding: 10px;
+    font-size: 0.9em;
+    color: #777;
+    background-color: #0d0d0d;
+    margin-top: auto;
+  }
+  
+  .ficha-container, .inventario-container {
+    background-color: #111;
+    color: #eee;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px auto;
+    width: 80%;
+    box-shadow: 0 0 10px rgba(0,255,255,0.2);
+  }
+  
+  .ficha-detalhes p, .inventario-item p {
+    margin: 4px 0;
+  }
+  
+  .inventario-lista {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 10px;
+  }
+  
+  .inventario-item {
+    background-color: #1a1a1a;
+    border: 1px solid #00bcd4;
+    border-radius: 10px;
+    padding: 10px;
+    width: 220px;
+    transition: 0.2s;
+  }
+  
+  .inventario-item:hover {
+    transform: scale(1.03);
+    box-shadow: 0 0 10px rgba(0,255,255,0.4);
+  }
