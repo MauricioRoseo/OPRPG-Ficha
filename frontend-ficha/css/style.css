@@ -1,132 +1,107 @@
-/* ---------- Reset ---------- */
-* {
+/* ============================
+   🌑 Estilo Geral do Sistema
+   Occulta Artificia — Fichas
+   ============================ */
+
+   body {
+    background-color: #0e0e0f;
+    color: #f5f5f5;
+    font-family: "Segoe UI", Arial, sans-serif;
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-  }
-  
-  /* ---------- Estrutura global ---------- */
-  body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #121212;
-    color: #f5f5f5;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
   }
   
-  /* ---------- Cabeçalho ---------- */
   header {
+    background-color: #1a1a1d;
+    color: #e2d784;
     text-align: center;
-    padding: 20px;
-    background: linear-gradient(90deg, #00bcd4, #006064);
-    color: #fff;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    padding: 20px 0;
+    border-bottom: 2px solid #2e2e31;
+    text-shadow: 0 0 8px rgba(255, 255, 200, 0.2);
   }
   
   header h1 {
-    font-size: 1.8em;
-    letter-spacing: 1px;
+    font-size: 2rem;
+    margin: 0;
   }
   
-  /* ---------- Cards ---------- */
+  main {
+    flex: 1;
+    padding: 20px;
+  }
+  
+  /* ============================
+     📜 Cards de Fichas
+     ============================ */
   .cards-container {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
     justify-content: center;
-    gap: 25px;
-    padding: 30px 20px;
   }
   
   .card {
-    background-color: #1a1a1a;
-    color: white;
-    border-radius: 10px;
-    padding: 15px;
-    margin: 10px;
-    width: 250px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    background-color: #1f1f22;
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.05);
+    padding: 20px;
+    transition: transform 0.2s ease, box-shadow 0.3s ease;
     cursor: pointer;
-    transition: transform 0.2s, box-shadow 0.2s;
   }
   
   .card:hover {
-    transform: scale(1.03);
-    box-shadow: 0 0 15px rgba(0,255,255,0.4);
+    transform: translateY(-5px);
+    box-shadow: 0 0 25px rgba(226, 215, 132, 0.2);
   }
   
   .card h3 {
-    color: #00bcd4;
-    margin-bottom: 8px;
+    margin-top: 0;
+    color: #e2d784;
   }
   
   .card p {
-    color: #bbb;
-    font-size: 0.9em;
-    margin: 4px 0;
+    margin: 5px 0;
+    color: #dcdcdc;
   }
   
-  .card .actions {
-    margin-top: 15px;
-    display: flex;
-    justify-content: space-between;
-    gap: 8px;
-  }
-  
-  .btn {
-    background-color: #00bcd4;
-    border: none;
-    border-radius: 6px;
-    color: #fff;
-    padding: 8px 12px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: background-color 0.2s ease;
-    font-size: 0.85em;
-  }
-  
-  .btn:hover {
-    background-color: #0097a7;
-  }
-  
-  /* ---------- Área inferior ---------- */
-  .btn-area {
-    display: flex;
-    justify-content: center;
-    margin: 20px 0 40px;
-    gap: 10px;
-  }
-  
-  /* ---------- Mensagens ---------- */
   .no-results {
     text-align: center;
     color: #aaa;
-    font-size: 1.1em;
-    margin-top: 50px;
+    font-style: italic;
   }
   
-  /* ---------- Rodapé ---------- */
-  footer {
-    text-align: center;
-    padding: 10px;
-    font-size: 0.9em;
-    color: #777;
-    background-color: #0d0d0d;
-    margin-top: auto;
-  }
-  
-  .ficha-container, .inventario-container {
-    background-color: #111;
-    color: #eee;
-    border-radius: 10px;
+  /* ============================
+     🎒 Ficha Individual
+     ============================ */
+  .ficha-container {
+    background-color: #1f1f22;
+    border-radius: 12px;
     padding: 20px;
-    margin: 20px auto;
-    width: 80%;
-    box-shadow: 0 0 10px rgba(0,255,255,0.2);
+    margin-bottom: 20px;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.05);
   }
   
-  .ficha-detalhes p, .inventario-item p {
+  .ficha-detalhes h2 {
+    color: #e2d784;
+    margin-bottom: 10px;
+  }
+  
+  .ficha-detalhes p {
     margin: 4px 0;
+  }
+  
+  .inventario-container {
+    background-color: #1f1f22;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.05);
+  }
+  
+  .inventario-container h2 {
+    color: #e2d784;
   }
   
   .inventario-lista {
@@ -137,15 +112,249 @@
   }
   
   .inventario-item {
-    background-color: #1a1a1a;
-    border: 1px solid #00bcd4;
+    background-color: #29292d;
     border-radius: 10px;
-    padding: 10px;
-    width: 220px;
-    transition: 0.2s;
+    padding: 10px 15px;
+    flex: 1 1 200px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.03);
   }
   
-  .inventario-item:hover {
-    transform: scale(1.03);
-    box-shadow: 0 0 10px rgba(0,255,255,0.4);
+  .inventario-item h4 {
+    margin: 0 0 5px;
+    color: #e2d784;
   }
+  
+  /* ============================
+     🔘 Botões e Áreas
+     ============================ */
+  .btn-area {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .btn {
+    background-color: #e2d784;
+    color: #1a1a1d;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 20px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin: 5px;
+  }
+
+  .btn-sair {
+    background-color: #e28484;
+    color: #1a1a1d;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 20px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin: 5px;
+  }
+  
+  .btn:hover {
+    background-color: #fff6b3;
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(255, 255, 200, 0.3);
+  }
+
+  .btn-sair:hover {
+    background-color: #ffb3b3;
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(255, 255, 200, 0.3);
+  }
+  
+  /* ============================
+     🕯️ Rodapé
+     ============================ */
+  footer {
+    background-color: #1a1a1d;
+    color: #888;
+    text-align: center;
+    padding: 10px 0;
+    border-top: 2px solid #2e2e31;
+  }
+  
+  /* ============================
+     🌌 Tela Inicial (index.html)
+     ============================ */
+  .index-body {
+    background: radial-gradient(circle at top, #1a1a1d, #000);
+    color: #f5f5f5;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100vh;
+  }
+  
+  .index-header {
+    margin-top: 4rem;
+  }
+  
+  .index-header h1 {
+    font-size: 3rem;
+    color: #e2d784;
+    text-shadow: 0 0 10px rgba(255, 255, 200, 0.3);
+  }
+  
+  .subtitle {
+    font-size: 1.2rem;
+    color: #bcbcbc;
+  }
+  
+  .intro {
+    margin-top: 2rem;
+    padding: 1rem 2rem;
+  }
+  
+  .intro p {
+    max-width: 600px;
+    margin: 0 auto 2rem;
+    line-height: 1.6;
+    color: #dcdcdc;
+  }
+  
+  .index-footer {
+    margin-bottom: 1rem;
+    color: #888;
+    font-size: 0.9rem;
+  }
+  
+  /* ============================
+   ✏️ Formulário de Edição
+   ============================ */
+  .form-section {
+    background-color: #1a1a1d;
+    border-radius: 12px;
+    padding: 25px;
+    max-width: 900px;
+    margin: 20px auto;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.05);
+  }
+
+  .ficha-form label {
+    display: block;
+    font-weight: bold;
+    color: #d4d4dc;
+    margin-bottom: 5px;
+  }
+
+  .ficha-form input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #444;
+    border-radius: 6px;
+    background-color: #2b2b2f;
+    color: #f2f2f2;
+  }
+
+  .ficha-form input:focus {
+    outline: none;
+    border-color: #d4a537;
+  }
+
+  .form-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 15px;
+    margin-bottom: 20px;
+  }
+
+  .btn-save {
+    background-color: #2d862d;
+    color: #fff;
+  }
+
+  .btn-save:hover {
+    background-color: #3cb13c;
+    box-shadow: 0 0 10px rgba(60, 177, 60, 0.5);
+  }
+
+  .btn-cancel {
+    background-color: #b13a3a;
+    color: #fff;
+  }
+
+  .btn-cancel:hover {
+    background-color: #e05656;
+    box-shadow: 0 0 10px rgba(255, 100, 100, 0.4);
+  }
+
+  /* === Formulário de edição === */
+.form-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.form-card {
+  background-color: #1c1c1c;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.5);
+  width: 100%;
+  max-width: 500px;
+  color: #f2f2f2;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.2rem;
+}
+
+.form-group label {
+  font-weight: bold;
+  margin-bottom: 0.3rem;
+  color: #ccc;
+}
+
+.form-group input,
+.form-group textarea {
+  background-color: #2a2a2a;
+  border: 1px solid #444;
+  border-radius: 8px;
+  color: #fff;
+  padding: 0.8rem;
+  font-size: 1rem;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #6b5cff;
+  box-shadow: 0 0 6px #6b5cff80;
+}
+
+.btn-salvar {
+  background-color: #6b5cff;
+  color: white;
+  border: none;
+  padding: 0.9rem 1.5rem;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  width: 100%;
+  transition: background 0.3s ease;
+}
+
+.btn-salvar:hover {
+  background-color: #5849e6;
+}
+
+.btn-voltar {
+  color: #6b5cff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.btn-voltar:hover {
+  text-decoration: underline;
+}

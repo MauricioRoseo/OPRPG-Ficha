@@ -42,7 +42,7 @@ async function carregarFicha() {
     // Carregar inventário após ficha
     carregarInventario(id);
   } catch (err) {
-    console.error("❌ Erro ao carregar ficha:", err);
+    console.error("Erro ao carregar ficha:", err);
     fichaContainer.innerHTML = `<p>Erro ao carregar ficha: ${err.message}</p>`;
   }
 }
@@ -53,27 +53,31 @@ async function carregarInventario(ownerId) {
     const res = await fetch(`http://localhost:3003/item/owner/${ownerId}`);
     if (!res.ok) throw new Error(`Erro HTTP ${res.status}`);
 
-    const itens = await res.json();
+    const data = await res.json();
+    const itens = data.items || []; // ✅ acessa o array correto
 
-    if (!Array.isArray(itens) || itens.length === 0) {
+    if (itens.length === 0) {
       inventarioContainer.innerHTML = `
-        <h2>🎒 Inventário</h2>
+        <h2>Inventário</h2>
         <p>Nenhum item encontrado para este personagem.</p>
       `;
       return;
     }
 
     inventarioContainer.innerHTML = `
-      <h2>🎒 Inventário (${itens.length} itens)</h2>
+      <h2>Inventário (${itens.length} itens)</h2>
       <div class="inventario-lista">
         ${itens
           .map(
             (item) => `
             <div class="inventario-item">
               <h4>${item.name}</h4>
-              <p><strong>Tipo:</strong> ${item.type || "-"}</p>
               <p><strong>Descrição:</strong> ${item.description || "Sem descrição"}</p>
-              <p><strong>Quantidade:</strong> ${item.quantity || 1}</p>
+              <p><strong>Peso:</strong> ${item.weight || 1}</p>
+              <div class="actions" onclick="event.stopPropagation()">
+                <button class="btn" onclick="editarItem(${item.id})">Editar</button>
+                <button class="btn" onclick="deletarItem(${item.id})">Excluir</button>
+              </div>
             </div>
           `
           )
@@ -81,11 +85,31 @@ async function carregarInventario(ownerId) {
       </div>
     `;
   } catch (err) {
-    console.error("❌ Erro ao carregar inventário:", err);
+    console.error("Erro ao carregar inventário:", err);
     inventarioContainer.innerHTML = `
-      <h2>🎒 Inventário</h2>
+      <h2>Inventário</h2>
       <p>Erro ao carregar inventário: ${err.message}</p>
     `;
+  }
+}
+
+function editarItem(id) {
+  window.location.href = `editarItem.html?id=${id}`;
+}
+
+
+async function deletarItem(id) {
+  if (!confirm("Tem certeza que deseja excluir este item?")) return;
+
+  try {
+    const res = await fetch(`http://localhost:3003/item/${id}`, {
+      method: "DELETE",
+    });
+
+    if (!res.ok) throw new Error("Erro ao deletar item");
+    alert("Item excluída com sucesso!");
+  } catch (err) {
+    alert(`Erro: ${err.message}`);
   }
 }
 

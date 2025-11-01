@@ -1,35 +1,82 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="pt-BR">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Editar Ficha</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Editar Ficha | Occulta Artificia</title>
   <link rel="stylesheet" href="./css/style.css" />
 </head>
 <body>
-  <div class="form-area">
-    <h1>Editar Ficha do Personagem</h1>
-    <form id="editForm">
-      <label>Nome: <input type="text" id="name" required /></label><br />
-      <label>Idade: <input type="number" id="age" required /></label><br />
-      <label>Jogador: <input type="text" id="player" required /></label><br />
-      <label>Classe: <input type="text" id="class" required /></label><br />
-      <label>Trilha: <input type="text" id="trail" /></label><br />
-      <label>Afinidade: <input type="text" id="afinity" /></label><br />
-      <label>Origem: <input type="text" id="origin" /></label><br />
-      <label>Patente: <input type="text" id="patent" /></label><br />
-      <label>NEX: <input type="number" id="NEX" /></label><br />
-      <label>FOR: <input type="number" id="FOR" /></label><br />
-      <label>AGI: <input type="number" id="AGI" /></label><br />
-      <label>INT: <input type="number" id="INT" /></label><br />
-      <label>VIG: <input type="number" id="VIG" /></label><br />
-      <label>PRE: <input type="number" id="PRE" /></label><br />
+  <header>
+    <h1>Editar Ficha do Agente</h1>
+  </header>
 
-      <button type="submit">Salvar Alterações</button>
-    </form>
+  <main>
+    <section class="form-section">
+      <form id="editarFichaForm" class="ficha-form">
+        <div class="form-grid">
+          <div>
+            <label for="name">Nome:</label>
+            <input type="text" id="name" name="name" required />
+          </div>
 
-    <button id="deleteBtn" style="margin-top: 20px; color: red;">Excluir Personagem</button>
-  </div>
+          <!-- ADICIONEI O CAMPO age (era obrigatório no schema) -->
+          <div>
+            <label for="age">Idade:</label>
+            <input type="number" id="age" name="age" min="0" required />
+          </div>
+
+          <div>
+            <label for="player">Jogador:</label>
+            <input type="text" id="player" name="player" required />
+          </div>
+          <div>
+            <label for="class">Classe:</label>
+            <input type="text" id="class" name="class" />
+          </div>
+          <div>
+            <label for="trail">Trilha:</label>
+            <input type="text" id="trail" name="trail" />
+          </div>
+          <div>
+            <label for="origin">Origem:</label>
+            <input type="text" id="origin" name="origin" />
+          </div>
+          <div>
+            <label for="patent">Patente:</label>
+            <input type="text" id="patent" name="patent" />
+          </div>
+          <div>
+            <label for="afinity">Afinidade:</label>
+            <input type="text" id="afinity" name="afinity" />
+          </div>
+          <div>
+            <label for="NEX">NEX (%):</label>
+            <input type="number" id="NEX" name="NEX" min="0" max="99" />
+          </div>
+        </div>
+
+        <hr>
+
+        <div class="form-grid">
+          <div><label for="FOR">FOR:</label><input type="number" id="FOR" name="FOR" /></div>
+          <div><label for="AGI">AGI:</label><input type="number" id="AGI" name="AGI" /></div>
+          <div><label for="INT">INT:</label><input type="number" id="INT" name="INT" /></div>
+          <div><label for="VIG">VIG:</label><input type="number" id="VIG" name="VIG" /></div>
+          <div><label for="PRE">PRE:</label><input type="number" id="PRE" name="PRE" /></div>
+        </div>
+
+        <div class="btn-area">
+          <button type="submit" class="btn btn-save">💾 Salvar</button>
+          <button type="button" class="btn btn-cancel" id="cancelBtn">❌ Cancelar</button>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <p>Occulta Artificia © 2025 — Sistema de Fichas</p>
+  </footer>
 
   <script src="./js/editarFicha.js"></script>
 </body>

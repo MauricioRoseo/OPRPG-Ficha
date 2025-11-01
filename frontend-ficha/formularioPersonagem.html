@@ -1,36 +1,95 @@
 <!DOCTYPE html>
 <html lang="pt">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ficha</title>
-    <link rel="stylesheet" href="./css/style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Criar Personagem | FichaOPRPG</title>
+  <link rel="stylesheet" href="./css/style.css" />
 </head>
+
 <body>
-    <h1>Criar Personagem</h1>
+  <header>
+    <h1>FichaOPRPG — Criar Personagem</h1>
+  </header>
 
-  <form id="form-personagem">
-    <label>Nome: <input type="text" name="name" required /></label><br />
-    <label>Idade: <input type="number" name="age" required /></label><br />
-    <label>Jogador: <input type="text" name="player" required /></label><br />
-    <label>Classe: <input type="text" name="class" required /></label><br />
-    <label>Trilha: <input type="text" name="trail" required /></label><br />
-    <label>Afinidade: <input type="text" name="afinity" required /></label><br />
-    <label>Origem: <input type="text" name="origin" required /></label><br />
-    <label>Patente: <input type="text" name="patent" required /></label><br />
-    <label>NEX: <input type="number" name="NEX" required /></label><br />
-    <label>FOR: <input type="number" name="FOR" required /></label><br />
-    <label>AGI: <input type="number" name="AGI" required /></label><br />
-    <label>INT: <input type="number" name="INT" required /></label><br />
-    <label>VIG: <input type="number" name="VIG" required /></label><br />
-    <label>PRE: <input type="number" name="PRE" required /></label><br /><br />
+  <main>
+    <section class="form-section">
+      <form id="form-personagem" class="ficha-form">
+        <div class="form-grid">
+          <div>
+            <label>Nome</label>
+            <input type="text" name="name" required />
+          </div>
+          <div>
+            <label>Idade</label>
+            <input type="number" name="age" required />
+          </div>
+          <div>
+            <label>Jogador</label>
+            <input type="text" name="player" required />
+          </div>
+          <div>
+            <label>Classe</label>
+            <input type="text" name="class" required />
+          </div>
+          <div>
+            <label>Trilha</label>
+            <input type="text" name="trail" required />
+          </div>
+          <div>
+            <label>Afinidade</label>
+            <input type="text" name="afinity" required />
+          </div>
+          <div>
+            <label>Origem</label>
+            <input type="text" name="origin" required />
+          </div>
+          <div>
+            <label>Patente</label>
+            <input type="text" name="patent" required />
+          </div>
+          <div>
+            <label>NEX</label>
+            <input type="number" name="NEX" required />
+          </div>
+          <div>
+            <label>FOR</label>
+            <input type="number" name="FOR" required />
+          </div>
+          <div>
+            <label>AGI</label>
+            <input type="number" name="AGI" required />
+          </div>
+          <div>
+            <label>INT</label>
+            <input type="number" name="INT" required />
+          </div>
+          <div>
+            <label>VIG</label>
+            <input type="number" name="VIG" required />
+          </div>
+          <div>
+            <label>PRE</label>
+            <input type="number" name="PRE" required />
+          </div>
+        </div>
 
-    <button type="submit">Criar Personagem</button>
-  </form>
+        <div class="btn-area">
+          <button type="submit" class="btn btn-save">Criar Personagem</button>
+          <button type="button" class="btn btn-sair" onclick="window.location.href='listaFichas.html'">
+            Cancelar
+          </button>
+        </div>
+      </form>
 
-  <div id="resposta"></div>
+      <div id="resposta" style="text-align:center; margin-top:15px;"></div>
+    </section>
+  </main>
 
-  <!-- Script externo -->
-  <script src="js/formularioPersonagem.js"></script>
+  <footer>
+    <p>FichaOPRPG — Sistema de Fichas © 2025</p>
+  </footer>
+
+  <script src="./js/formularioPersonagem.js"></script>
 </body>
 </html>

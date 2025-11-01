@@ -3,13 +3,13 @@ const cardsContainer = document.getElementById("cardsContainer");
 
 async function carregarFichas() {
   try {
-    console.log("🔄 Buscando fichas...");
+    console.log("Buscando fichas...");
     const res = await fetch(apiUrl);
 
     if (!res.ok) throw new Error(`Erro HTTP: ${res.status}`);
 
     const personagens = await res.json();
-    console.log("✅ Fichas recebidas:", personagens);
+    console.log("Fichas recebidas:", personagens);
 
     cardsContainer.innerHTML = "";
 
@@ -34,7 +34,6 @@ async function carregarFichas() {
         <p><strong>NEX:</strong> ${p.NEX || 0}%</p>
 
         <div class="actions" onclick="event.stopPropagation()">
-          <button class="btn" onclick="verInventario(${p.id})">Inventário</button>
           <button class="btn" onclick="editarFicha(${p.id})">Editar</button>
           <button class="btn" onclick="deletarFicha(${p.id})">Excluir</button>
         </div>
@@ -43,7 +42,7 @@ async function carregarFichas() {
       cardsContainer.appendChild(card);
     });
   } catch (err) {
-    console.error("❌ Erro ao carregar fichas:", err);
+    console.error("Erro ao carregar fichas:", err);
     cardsContainer.innerHTML = `<p class='no-results'>Erro ao carregar fichas: ${err.message}</p>`;
   }
 }
@@ -52,9 +51,6 @@ function editarFicha(id) {
   window.location.href = `editarFicha.html?id=${id}`;
 }
 
-function verInventario(id) {
-  window.location.href = `inventario.html?owner=${id}`;
-}
 
 async function deletarFicha(id) {
   if (!confirm("Tem certeza que deseja excluir esta ficha?")) return;

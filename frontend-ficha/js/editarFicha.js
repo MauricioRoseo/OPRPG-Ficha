@@ -1,73 +1,109 @@
-const params = new URLSearchParams(window.location.search)
-const characterId = params.get('id')
+// js/editarFicha.js
+const form = document.getElementById("editarFichaForm");
+const urlParams = new URLSearchParams(window.location.search);
+const id = urlParams.get("id");
+const cancelBtn = document.getElementById("cancelBtn");
 
-if (!characterId || isNaN(characterId)) {
-  alert('ID inválido ou ausente.')
-  window.location.href = 'index.html'
+if (!id) {
+  alert("ID da ficha não informado.");
+  // redireciona para lista
+  window.location.href = "listaFichas.html";
 }
 
-const apiUrl = `http://localhost:3003/character/${characterId}`
+// Campos numéricos esperados pelo schema
+const numericFields = ["age", "NEX", "FOR", "AGI", "INT", "VIG", "PRE"];
 
-window.addEventListener('DOMContentLoaded', async () => {
+// Carregar dados da ficha e preencher o formulário
+async function carregarFicha() {
   try {
-    const res = await fetch(apiUrl)
-    if (!res.ok) throw new Error('Personagem não encontrado.')
-
-    const character = await res.json()
-    for (const key in character) {
-      const input = document.getElementById(key)
-      if (input) input.value = character[key]
+    const res = await fetch(`http://localhost:3003/character/${id}`);
+    if (!res.ok) {
+      const err = await res.json().catch(() => null);
+      throw new Error(err?.message || `Erro HTTP ${res.status}`);
     }
+
+    const ficha = await res.json();
+
+    // Preenche os campos (só os que existem no form)
+    Object.keys(ficha).forEach((key) => {
+      const campo = document.getElementById(key);
+      if (campo) campo.value = ficha[key] ?? "";
+    });
   } catch (err) {
-    alert(err.message)
-    window.location.href = 'index.html'
+    console.error("Erro ao carregar ficha:", err);
+    alert("Erro ao carregar ficha: " + (err.message || err));
+    // fallback: volta para lista
+    window.location.href = "listaFichas.html";
   }
-})
+}
 
-document.getElementById('editForm').addEventListener('submit', async (e) => {
-  e.preventDefault()
+// Converte campos e cria payload correto
+function buildPayloadFromForm() {
+  const formData = new FormData(form);
+  const payload = {};
 
-  const data = {}
-  document.querySelectorAll('#editForm input').forEach(input => {
-    if (input.type === 'number') {
-      data[input.id] = Number(input.value)
+  for (const [key, value] of formData.entries()) {
+    // trim strings
+    const v = typeof value === "string" ? value.trim() : value;
+
+    if (numericFields.includes(key)) {
+      // converte para número (se vazio -> null)
+      if (v === "" || v === null) {
+        // deixa undefined para que model detecte se campo faltante (mas schema exige, então o campo deve existir)
+        payload[key] = null;
+      } else {
+        const num = Number(v);
+        payload[key] = Number.isNaN(num) ? null : num;
+      }
     } else {
-      data[input.id] = input.value.trim()
+      payload[key] = v;
     }
-  })
+  }
+
+  return payload;
+}
+
+// Tratamento da submissão
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  // monta payload
+  const dados = buildPayloadFromForm();
+
+  // Validacao simples no cliente: campos obrigatórios
+  const required = ["name", "age", "player", "class", "trail", "afinity", "origin", "patent", "NEX", "FOR", "AGI", "INT", "VIG", "PRE"];
+  const missing = required.filter((k) => dados[k] === undefined || dados[k] === null || dados[k] === "");
+  if (missing.length > 0) {
+    alert("Preencha todos os campos obrigatórios: " + missing.join(", "));
+    return;
+  }
 
   try {
-    const res = await fetch(apiUrl, {
-      method: 'PUT',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(data)
-    })
+    const res = await fetch(`http://localhost:3003/character/${id}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(dados),
+    });
 
     if (!res.ok) {
-      const err = await res.json()
-      throw new Error(err.message || 'Erro ao atualizar.')
+      // tenta ler corpo de erro (mensagem mais legível do backend)
+      const errBody = await res.json().catch(() => null);
+      throw new Error(errBody?.message || `Erro HTTP ${res.status}`);
     }
 
-    alert('Ficha atualizada com sucesso!')
+    alert("Ficha atualizada com sucesso!");
+    // redireciona para exibição da ficha
+    window.location.href = `ficha.html?id=${id}`;
   } catch (err) {
-    alert('Erro: ' + err.message)
+    console.error("Erro ao salvar ficha:", err);
+    alert("Erro ao salvar ficha: " + (err.message || err));
   }
-})
+});
 
-document.getElementById('deleteBtn').addEventListener('click', async () => {
-  if (!confirm('Tem certeza que deseja excluir esta ficha?')) return
+// botão cancelar
+cancelBtn.addEventListener("click", () => {
+  window.location.href = `ficha.html?id=${id}`;
+});
 
-  try {
-    const res = await fetch(apiUrl, { method: 'DELETE' })
-
-    if (!res.ok) {
-      const err = await res.json()
-      throw new Error(err.message || 'Erro ao deletar.')
-    }
-
-    alert('Ficha excluída com sucesso!')
-    window.location.href = 'index.html'
-  } catch (err) {
-    alert('Erro: ' + err.message)
-  }
-})
+// Inicializa
+window.addEventListener("DOMContentLoaded", carregarFicha);
